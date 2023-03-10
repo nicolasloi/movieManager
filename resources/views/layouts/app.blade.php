@@ -6,6 +6,6 @@
     <title>{{config('app.name', 'MovieList')}}</title>
 </head>
 <body>
-<h1>Welcome To about</h1>
+    @yield('content')
 </body>
 </html>
