@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{config('app.name', 'MovieList')}}</title>
     @vite('resources/css/app.css')
+    @vite('resources/css/custom.css')
 </head>
-<body>
-    @yield('content')
+<body class="bg bg-secondary">
+    @include('inc.navbar')
+    <div class="container">
+        @yield('content')
+    </div>
 </body>
 </html>
