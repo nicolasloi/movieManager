@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    use HasFactory;
+    // Table name
+    protected $table = 'movie';
+    //Primary key
+    public $primaryKey = 'id';
+    //Timestamps
+    public $timestamps = true;
 }

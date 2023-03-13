@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
      */
     public function index()
     {
-        //
+        return view('movies.index');
     }
 
     /**
