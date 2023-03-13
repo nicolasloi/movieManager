@@ -29,9 +29,12 @@ module.exports = {
                     "error": "#F87272",
 
                     "notBlack": "#101828",
+
+                    "notWhite": "#8CA2C0",
                 },
             },
         ],
+
     },
     plugins: [require("daisyui")],
 }

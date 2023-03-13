@@ -7,10 +7,8 @@
     @vite('resources/css/app.css')
     @vite('resources/css/custom.css')
 </head>
-<body class="bg bg-secondary">
+<body class="bg-secondary">
     @include('inc.navbar')
-    <div class="container">
         @yield('content')
-    </div>
 </body>
 </html>
