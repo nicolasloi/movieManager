@@ -17,7 +17,7 @@
         <ul class="menu menu-horizontal space-x-20">
             <li><a href="/">Home</a></li>
             <li><a href="/services">Services</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="/movies">Movies</a></li>
         </ul>
     </div>
     <div class="navbar-end mr-4">

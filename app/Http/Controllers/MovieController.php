@@ -13,7 +13,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return view('movies.index');
+        $movies = Movie::all();
+        return view('movies.index')->with('movies', $movies);
     }
 
     /**
@@ -37,7 +38,8 @@ class MovieController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $movie = Movie::find($id);
+        return view('movies.show')->with('movie', $movie);
     }
 
     /**

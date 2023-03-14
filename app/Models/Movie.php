@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     // Table name
-    protected $table = 'movie';
+    protected $table = 'movies';
     //Primary key
     public $primaryKey = 'id';
     //Timestamps
