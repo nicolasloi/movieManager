@@ -12,7 +12,15 @@
                             <input type="checkbox" class="checkbox"/>
                         </label>
                     </th>
-                    <th>Name</th>
+                    <th>
+                        <form action="" method="get">
+                            @if(request()->get('sort') === '-title')
+                                <button type="submit" name="sort" value="title">Name</button>
+                            @else
+                                <button type="submit" name="sort" value="-title">Name</button>
+                            @endif
+                        </form>
+                    </th>
                     <th>Content</th>
                     <th>Score</th>
                     <th></th>
@@ -23,7 +31,6 @@
                     @foreach($movies as $movie)
                         <tr>
                             <th>
-                                <label>
                                 <label>
                                     <a href="/movies/{{$movie->id}}">
                                         <input type="button" class="checkbox" />

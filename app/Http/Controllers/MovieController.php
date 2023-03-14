@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class MovieController extends Controller
 {
@@ -13,7 +15,10 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
+
+        $movies = QueryBuilder::for(Movie::class)->allowedSorts('title')->get();
+        //$movies = Movie::orderBy('title', 'asc')->get();
+        //$movies = DB::select('SELECT * FROM movies');
         return view('movies.index')->with('movies', $movies);
     }
 
