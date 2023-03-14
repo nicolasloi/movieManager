@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Movies</h1>
-    <div class="flex flex-col items-center h-screen bg-secondary">
+    <div class="flex flex-col items-center h-screen bg-secondary mt-12">
         <div class="overflow-x-auto mx-auto max-w-screen-2xl w-full">
             <table class="table w-full">
                 <thead>
@@ -27,13 +27,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if(count($movies) > 1)
+                @if(count($movies) > 0)
                     @foreach($movies as $movie)
                         <tr>
                             <th>
                                 <label>
                                     <a href="/movies/{{$movie->id}}">
-                                        <input type="button" class="checkbox" />
+                                        <input type="button" class="checkbox"/>
                                     </a>
                                 </label>
                             </th>
@@ -50,16 +50,16 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td class="max-w-xs min-w-xs whitespace-pre-line">
                                 {{$movie->body}}
                             </td>
                             <td>
                                 <div class="rating">
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked />
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
+                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
+                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
+                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
+                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked/>
+                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
                                 </div>
                             </td>
                             <th>
@@ -69,19 +69,11 @@
                             </th>
                         </tr>
                     @endforeach
-
                 </tbody>
-                <!-- foot -->
-                <tfoot>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Content</th>
-                    <th>Score</th>
-                    <th></th>
-                </tr>
-                </tfoot>
             </table>
+            <div class="p-5">
+                {{ $movies->appends($_GET)->links() }}
+            </div>
         </div>
         @else
             <p>No movies found</p>

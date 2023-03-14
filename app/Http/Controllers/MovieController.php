@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Metadata\PostCondition;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class MovieController extends Controller
@@ -16,9 +17,10 @@ class MovieController extends Controller
     public function index()
     {
 
-        $movies = QueryBuilder::for(Movie::class)->allowedSorts('title')->get();
+        $movies = QueryBuilder::for(Movie::class)->allowedSorts('title', 'created_at')->paginate(8);
         //$movies = Movie::orderBy('title', 'asc')->get();
         //$movies = DB::select('SELECT * FROM movies');
+        //$movies = Movie::orderBy('title', 'desc')->paginate(10);
         return view('movies.index')->with('movies', $movies);
     }
 
