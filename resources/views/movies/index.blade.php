@@ -76,7 +76,7 @@
             </div>
         </div>
         @else
-            <p>No movies found</p>
+            <p class="text-3xl p-12">No movies found</p>
         @endif
     </div>
 @endsection
