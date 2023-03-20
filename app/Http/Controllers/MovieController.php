@@ -42,7 +42,13 @@ class MovieController extends Controller
             'body' => 'required'
         ]);
 
-        return 123;
+        // Create movie
+         $movie = new Movie;
+         $movie->title = $request->input('title');
+         $movie->body = $request->input('body');
+         $movie->save();
+
+         return redirect('/movies')->with('success', 'Movie Created');
     }
 
     /**

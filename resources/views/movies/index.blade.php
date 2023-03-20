@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Movies</h1>
+    <div class="flex items-center">
+        <h1 class="ml-11 text-xl">Movies</h1>
+        <button class="btn btn-primary text-white ml-auto mr-11"><a href="/movies/create">Create new</a></button>
+    </div>
     <div class="flex flex-col items-center h-screen bg-secondary mt-12">
         <div class="overflow-x-auto mx-auto max-w-screen-2xl w-full">
             <table class="table w-full">
@@ -41,7 +44,7 @@
                                 <div class="flex items-center space-x-3">
                                     <div class="avatar">
                                         <div class="mask mask-squircle w-12 h-12">
-                                            <img src="" alt="image of the film"/>
+                                            <img src="" alt="img"/>
                                         </div>
                                     </div>
                                     <div>
@@ -51,7 +54,7 @@
                                 </div>
                             </td>
                             <td class="max-w-xs min-w-xs whitespace-pre-line">
-                                {{$movie->body}}
+                                {!!$movie->body!!}
                             </td>
                             <td>
                                 <div class="rating">

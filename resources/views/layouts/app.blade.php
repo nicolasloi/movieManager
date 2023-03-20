@@ -9,6 +9,14 @@
 </head>
 <body class="bg-secondary">
     @include('inc.navbar')
-        @yield('content')
+    <div class="flex flex-col p-4 gap-5 items-center">
+        @include('inc.messages')
+    </div>
+    @yield('content')
+
+    <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"> </script>
+    <script>
+        CKEDITOR.replace( 'article-ckeditor' );
+    </script>
 </body>
 </html>
