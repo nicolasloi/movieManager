@@ -28,4 +28,6 @@ Route::get('/services', [PagesController::class, 'services']);
 Route::resource('movies', MovieController::class);
 
 
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
