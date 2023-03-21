@@ -10,6 +10,18 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class MovieController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('auth', ['except' => ['index','show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -67,6 +79,12 @@ class MovieController extends Controller
     public function edit(string $id)
     {
         $movie = Movie::find($id);
+
+        // Check for correct user
+        if (auth()->user()->id !==$movie->user_id){
+            return redirect('/dashboard')->with('error', 'Unauthorized Page');
+        }
+
         return view('movies.edit')->with('movie', $movie);
     }
 

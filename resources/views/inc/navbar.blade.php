@@ -10,7 +10,9 @@
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                 <li><a href="/">Home</a></li>
                 <li><a href="/services">Services</a></li>
-                <li><a href="/about">About</a></li>
+                @if(!Auth::guest())
+                    <li><a href="/dashboard">dashboard</a></li>
+                @endif
             </ul>
         </div>
 
@@ -20,7 +22,9 @@
         <ul class="menu menu-horizontal space-x-20">
             <li><a href="/">Home</a></li>
             <li><a href="/services">Services</a></li>
-            <li><a href="/movies">Movies</a></li>
+            @if(!Auth::guest())
+            <li><a href="/dashboard">dashboard</a></li>
+            @endif
         </ul>
     </div>
 
