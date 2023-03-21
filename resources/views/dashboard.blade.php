@@ -67,10 +67,13 @@
                                         <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
                                     </div>
                                 </td>
-                                <th>
-                                    <button class="btn btn-ghost btn-xs">Edit</button>
-                                    <br>
-                                    <button class="btn btn-ghost btn-xs">Delete</button>
+                                <th class="max-w-min">
+                                    <div class="flex justify-center gap-5">
+                                        <a href="/movies/{{$movie->id}}/edit" class="btn btn-primary py-2 text-white btn-sm">Edit</a>{!! Form::open(['route' => ['movies.destroy', $movie->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Are you sure you want to remove this movie ?")']) !!}
+                                        {!!Form::hidden('_method','DELETE')!!}
+                                        {{ Form::submit('Delete', ['class'=>'btn btn-error py-2 text-white btn-sm']) }}
+                                        {!! Form::close() !!}
+                                    </div>
                                 </th>
                             </tr>
                         @endforeach
