@@ -39,7 +39,7 @@
                 @if (Route::has('register'))
                     <a class="nav-link" href="{{ route('register') }}">
                         <button
-                            class="btn btn-outline sm:btn-sm md:btn-md text-base-100 btn-primary rounded-full">{{ __('Register') }}</button>
+                            class="btn btn-outline sm:btn-sm md:btn-md flex flex-col items-center text-base-100 btn-primary rounded-full">{{ __('Register') }}</button>
                     </a>
                 @endif
             @else
@@ -56,8 +56,8 @@
                             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 
                             <li>
-                                <a class="justify-between">
-                                    Profile
+                                <a href="/dashboard" class="justify-between">
+                                    Dashboard
                                     <span class="badge badge-primary text-base-100">New</span>
                                 </a>
                             </li>

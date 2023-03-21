@@ -46,6 +46,7 @@ class MovieController extends Controller
          $movie = new Movie;
          $movie->title = $request->input('title');
          $movie->body = $request->input('body');
+         $movie->user_id = auth()->user()->id;
          $movie->save();
 
          return redirect('/movies')->with('success', 'Movie Created');
