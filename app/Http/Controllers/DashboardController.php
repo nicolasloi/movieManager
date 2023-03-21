@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class DashboardController extends Controller
 {
@@ -23,6 +26,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $user_id = auth()->user()->id;
+        // $user = \App\Models\User::find($user_id)->movies()->paginate(8);
+        $user = QueryBuilder::for(Movie::class)
+            ->where('user_id', $user_id)
+            ->allowedSorts('title')
+            ->paginate(8);
+        return view('dashboard')->with('movies', $user);
     }
 }

@@ -49,7 +49,7 @@ class MovieController extends Controller
          $movie->user_id = auth()->user()->id;
          $movie->save();
 
-         return redirect('/movies')->with('success', 'Movie Created');
+         return redirect('/dashboard')->with('success', 'Movie Created');
     }
 
     /**
@@ -86,7 +86,7 @@ class MovieController extends Controller
         $movie->body = $request->input('body');
         $movie->save();
 
-        return redirect('/movies')->with('success', 'Movie Updated');
+        return redirect('/dashboard')->with('success', 'Movie Updated');
     }
 
     /**
@@ -96,6 +96,6 @@ class MovieController extends Controller
     {
         $movie = Movie::find($id);
         $movie->delete();
-        return redirect('/movies')->with('success', 'Movie Removed');
+        return redirect('/dashboard')->with('success', 'Movie Removed');
     }
 }
