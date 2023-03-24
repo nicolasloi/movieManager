@@ -31,7 +31,7 @@ class DashboardController extends Controller
         $user = QueryBuilder::for(Movie::class)
             ->where('user_id', $user_id)
             ->allowedSorts('title')
-            ->paginate(8);
+            ->paginate(7);
         return view('dashboard')->with('movies', $user);
     }
 }

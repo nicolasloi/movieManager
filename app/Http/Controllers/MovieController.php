@@ -29,7 +29,7 @@ class MovieController extends Controller
     public function index()
     {
 
-        $movies = QueryBuilder::for(Movie::class)->allowedSorts('title', 'created_at')->paginate(8);
+        $movies = QueryBuilder::for(Movie::class)->allowedSorts('title', 'created_at')->paginate(6);
         //$movies = Movie::orderBy('title', 'asc')->get();
         //$movies = DB::select('SELECT * FROM movies');
         //$movies = Movie::orderBy('title', 'desc')->paginate(10);
