@@ -38,9 +38,14 @@
                                 <th>
                                     <label class="text-gray-400 hover:text-gray-500">
                                         <a href="/movies/{{$movie->id}}">
-                                            <svg class="w-5 h-5 text-primary" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <svg class="w-5 h-5 text-primary" aria-hidden="true" fill="none"
+                                                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"
+                                                      stroke-linejoin="round"></path>
                                             </svg>
                                         </a>
                                     </label>
@@ -59,20 +64,23 @@
                                     </div>
                                 </td>
                                 <td class="max-w-xs min-w-xs whitespace-pre-line">
-                                    {!!$movie->body!!}
+                                    {!! limit_text($movie->body, 50) !!}
                                 </td>
+
                                 <td>
                                     <div class="rating">
                                         <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
                                         <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
                                         <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
-                                        <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked/>
+                                        <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"
+                                               checked/>
                                         <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
                                     </div>
                                 </td>
                                 <th class="max-w-min">
                                     <div class="flex justify-center gap-5">
-                                        <a href="/movies/{{$movie->id}}/edit" class="btn btn-primary py-2 text-white btn-sm">Edit</a>{!! Form::open(['route' => ['movies.destroy', $movie->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Are you sure you want to remove this movie ?")']) !!}
+                                        <a href="/movies/{{$movie->id}}/edit"
+                                           class="btn btn-primary py-2 text-white btn-sm">Edit</a>{!! Form::open(['route' => ['movies.destroy', $movie->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Are you sure you want to remove this movie ?")']) !!}
                                         {!!Form::hidden('_method','DELETE')!!}
                                         {{ Form::submit('Delete', ['class'=>'btn btn-error py-2 text-white btn-sm']) }}
                                         {!! Form::close() !!}
@@ -91,4 +99,12 @@
             @endif
         </div>
     </div>
+    @php
+        function limit_text($text, $limit) {
+            if (strlen($text) > $limit) {
+            $text = substr($text, 0, $limit-3) . '...';
+            }
+            return $text;
+        }
+    @endphp
 @endsection
