@@ -113,6 +113,12 @@ class MovieController extends Controller
     public function destroy(string $id)
     {
         $movie = Movie::find($id);
+
+        // Check for correct user
+        if (auth()->user()->id !==$movie->user_id){
+            return redirect('/dashboard')->with('error', 'Unauthorized Page');
+        }
+
         $movie->delete();
         return redirect('/dashboard')->with('success', 'Movie Removed');
     }
