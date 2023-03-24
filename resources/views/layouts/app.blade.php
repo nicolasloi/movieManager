@@ -24,7 +24,11 @@
         <div class="flex flex-col p-4 gap-5 items-center">
             @include('inc.messages')
         </div>
+
+        <div>
             @yield('content')
+        </div>
+
         @include('inc.footer')
         <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
         <script>

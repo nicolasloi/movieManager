@@ -87,6 +87,5 @@
                 <p class="text-3xl p-12">No movies found</p>
             @endif
         </div>
-
     </div>
 @endsection
