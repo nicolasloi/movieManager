@@ -3,9 +3,13 @@
 @section('content')
     <a href="/dashboard" class="btn btn-primary text-white">Go Back</a>
     <h1>{{$movie->title}}</h1>
-    <div class="w-1/2">
-        <img class="w-full" src="/storage/cover_images/{{$movie->cover_image}}" alt="img"/>
-    </div>
+    @if($movie->cover_image == 'noImage.jpg')
+
+    @else
+        <div class="w-1/2">
+            <img class="w-full" src="/storage/cover_images/{{$movie->cover_image}}" alt="img"/>
+        </div>
+    @endif
     <div>
         {!!$movie->body!!}
     </div>

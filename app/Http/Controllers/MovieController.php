@@ -7,6 +7,7 @@ use App\Models\Movie;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Metadata\PostCondition;
 use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Support\Facades\Storage;
 
 class MovieController extends Controller
 {
@@ -116,10 +117,27 @@ class MovieController extends Controller
             'body' => 'required'
         ]);
 
+        // Handle File Upload
+        if($request->hasFile('cover_image')){
+            // Get filename with the extension
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filname
+            $filName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // File name to store
+            $fileNameToStore = $filName.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        }
+
         // Update movie
         $movie = Movie::find($id);
         $movie->title = $request->input('title');
         $movie->body = $request->input('body');
+        if($request->hasFile('cover_image')){
+            $movie->cover_image = $fileNameToStore;
+        }
         $movie->save();
 
         return redirect('/dashboard')->with('success', 'Movie Updated');
@@ -135,6 +153,11 @@ class MovieController extends Controller
         // Check for correct user
         if (auth()->user()->id !==$movie->user_id){
             return redirect('/dashboard')->with('error', 'Unauthorized Page');
+        }
+
+        if($movie->cover_image != 'noImage.jpg'){
+            //delete image
+            Storage::delete('public/cover_images/'.$movie->cover_image);
         }
 
         $movie->delete();
