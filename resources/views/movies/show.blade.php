@@ -3,6 +3,9 @@
 @section('content')
     <a href="/dashboard" class="btn btn-primary text-white">Go Back</a>
     <h1>{{$movie->title}}</h1>
+    <div class="w-1/2">
+        <img class="w-full" src="/storage/cover_images/{{$movie->cover_image}}" alt="img"/>
+    </div>
     <div>
         {!!$movie->body!!}
     </div>
@@ -11,11 +14,11 @@
     <hr>
     @if(!Auth::guest())
         @if(Auth::user()->id == $movie->user_id)
-            <a href="/movies/{{$movie->id}}/edit" class="btn btn-primary text-white">Edit</a>
-
-            {!! Form::open(['route' => ['movies.destroy', $movie->id], 'method' => 'POST']) !!}
+            <a href="/movies/{{$movie->id}}/edit"
+               class="btn btn-primary py-2 text-white btn-sm">Edit</a>
+            {!! Form::open(['route' => ['movies.destroy', $movie->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Are you sure you want to remove this movie ?")']) !!}
             {!!Form::hidden('_method','DELETE')!!}
-            {{ Form::submit('Delete', ['class'=>'btn btn-error text-white']) }}
+            {{ Form::submit('Delete', ['class'=>'btn btn-error py-2 text-white btn-sm']) }}
             {!! Form::close() !!}
         @endif
     @endif

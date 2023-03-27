@@ -53,8 +53,8 @@
                                 <td>
                                     <div class="flex items-center space-x-3">
                                         <div class="avatar">
-                                            <div class="mask mask-squircle w-12 h-12">
-                                                <img src="" alt="img"/>
+                                            <div class="mask mask-squircle w-24 h-24">
+                                                <img class="w-full" src="/storage/cover_images/{{$movie->cover_image}}" alt="img"/>
                                             </div>
                                         </div>
                                         <div>
@@ -80,7 +80,8 @@
                                 <th class="max-w-min">
                                     <div class="flex justify-center gap-5">
                                         <a href="/movies/{{$movie->id}}/edit"
-                                           class="btn btn-primary py-2 text-white btn-sm">Edit</a>{!! Form::open(['route' => ['movies.destroy', $movie->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Are you sure you want to remove this movie ?")']) !!}
+                                           class="btn btn-primary py-2 text-white btn-sm">Edit</a>
+                                        {!! Form::open(['route' => ['movies.destroy', $movie->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Are you sure you want to remove this movie ?")']) !!}
                                         {!!Form::hidden('_method','DELETE')!!}
                                         {{ Form::submit('Delete', ['class'=>'btn btn-error py-2 text-white btn-sm']) }}
                                         {!! Form::close() !!}

@@ -43,7 +43,7 @@
                                 <div class="flex items-center space-x-3">
                                     <div class="avatar">
                                         <div class="mask mask-squircle w-12 h-12">
-                                            <img src="" alt="img"/>
+                                            <img class="w-full" src="/storage/cover_images/{{$movie->cover_image}}" alt="img"/>
                                         </div>
                                     </div>
                                     <div>

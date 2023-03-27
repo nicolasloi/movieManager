@@ -51,14 +51,32 @@ class MovieController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
         ]);
+
+        // Handle File Upload
+        if($request->hasFile('cover_image')){
+            // Get filename with the extension
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filname
+            $filName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // File name to store
+            $fileNameToStore = $filName.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noImage.jpg';
+        }
 
         // Create movie
          $movie = new Movie;
          $movie->title = $request->input('title');
          $movie->body = $request->input('body');
          $movie->user_id = auth()->user()->id;
+         $movie->cover_image = $fileNameToStore;
          $movie->save();
 
          return redirect('/dashboard')->with('success', 'Movie Created');
