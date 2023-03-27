@@ -66,10 +66,11 @@
                                 <td class="max-w-xs min-w-xs whitespace-pre-line">
                                     {!! limit_text($movie->body, 50) !!}
                                 </td>
-                                
+
                                 <td>
-                                    {!! $movie->stars !!}
+                                    {!!($movie->star_rating) !!}
                                 </td>
+
                                 <th class="max-w-min">
                                     <div class="flex justify-center gap-5">
                                         <a href="/movies/{{$movie->id}}/edit"

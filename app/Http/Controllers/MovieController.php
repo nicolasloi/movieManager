@@ -30,10 +30,6 @@ class MovieController extends Controller
     public function index()
     {
         $movies = QueryBuilder::for(Movie::class)->allowedSorts('title', 'created_at')->paginate(6);
-        $movies->transform(function ($movie, $key) {
-            $movie->stars = $this->ratingToStars($movie->rating);
-            return $movie;
-        });
         return view('movies.index')->with('movies', $movies);
     }
 
@@ -54,7 +50,8 @@ class MovieController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999',
+            'star_rating' => 'required'
         ]);
 
         // Handle File Upload
@@ -79,6 +76,7 @@ class MovieController extends Controller
          $movie->body = $request->input('body');
          $movie->user_id = auth()->user()->id;
          $movie->cover_image = $fileNameToStore;
+         $movie->star_rating = $request->input('star_rating', 1);
          $movie->save();
 
          return redirect('/dashboard')->with('success', 'Movie Created');
@@ -163,18 +161,5 @@ class MovieController extends Controller
 
         $movie->delete();
         return redirect('/dashboard')->with('success', 'Movie Removed');
-    }
-
-    private function ratingToStars($rating)
-    {
-        $stars = '';
-        for ($i = 1; $i <= 5; $i++) {
-            if ($i <= round($rating)) {
-                $stars .= '<i class="text-yellow-400 fas fa-star"></i>';
-            } else {
-                $stars .= '<i class="text-gray-400 far fa-star"></i>';
-            }
-        }
-        return $stars;
     }
 }

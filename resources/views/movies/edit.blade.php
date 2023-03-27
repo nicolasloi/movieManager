@@ -15,6 +15,25 @@
         {{Form::label('body', 'Body')}}
         {{Form::textarea('body', $movie->body, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
     </div>
+    <div class="form-group">
+        {{ Form::label('star_rating', 'Rating') }}
+        <div class="rating">
+            {{ Form::radio('star_rating', '1', true, ['id' => 'star1', 'class' => 'mask mask-star-2 bg-green-500']) }}
+            <label for="star1"></label>
+
+            {{ Form::radio('star_rating', '2', false, ['id' => 'star2', 'class' => 'mask mask-star-2 bg-green-500']) }}
+            <label for="star2"></label>
+
+            {{ Form::radio('star_rating', '3', false, ['id' => 'star3', 'class' => 'mask mask-star-2 bg-green-500']) }}
+            <label for="star3"></label>
+
+            {{ Form::radio('star_rating', '4', false, ['id' => 'star4', 'class' => 'mask mask-star-2 bg-green-500']) }}
+            <label for="star4"></label>
+
+            {{ Form::radio('star_rating', '5', false, ['id' => 'star5', 'class' => 'mask mask-star-2 bg-green-500']) }}
+            <label for="star5"></label>
+        </div>
+    </div>
     {!!Form::hidden('_method','PUT')!!}
     {{Form::submit('Submit', ['class'=>'btn btn-primary text-white'])}}
     {!! Form::close() !!}
