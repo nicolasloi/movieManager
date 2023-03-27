@@ -29,13 +29,14 @@ class MovieController extends Controller
      */
     public function index()
     {
-
         $movies = QueryBuilder::for(Movie::class)->allowedSorts('title', 'created_at')->paginate(6);
-        //$movies = Movie::orderBy('title', 'asc')->get();
-        //$movies = DB::select('SELECT * FROM movies');
-        //$movies = Movie::orderBy('title', 'desc')->paginate(10);
+        $movies->transform(function ($movie, $key) {
+            $movie->stars = $this->ratingToStars($movie->rating);
+            return $movie;
+        });
         return view('movies.index')->with('movies', $movies);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -162,5 +163,18 @@ class MovieController extends Controller
 
         $movie->delete();
         return redirect('/dashboard')->with('success', 'Movie Removed');
+    }
+
+    private function ratingToStars($rating)
+    {
+        $stars = '';
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= round($rating)) {
+                $stars .= '<i class="text-yellow-400 fas fa-star"></i>';
+            } else {
+                $stars .= '<i class="text-gray-400 far fa-star"></i>';
+            }
+        }
+        return $stars;
     }
 }

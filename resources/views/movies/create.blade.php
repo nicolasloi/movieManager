@@ -15,8 +15,18 @@
         {{Form::label('body', 'Body')}}
         {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
     </div>
+    <div class="rating">
+        {{ Form::radio('rating-4', '1', true, ['class' => 'mask mask-star-2 bg-green-500']) }}
+        {{ Form::radio('rating-4', '2', false, ['class' => 'mask mask-star-2 bg-green-500']) }}
+        {{ Form::radio('rating-4', '3', false, ['class' => 'mask mask-star-2 bg-green-500']) }}
+        {{ Form::radio('rating-4', '4', false, ['class' => 'mask mask-star-2 bg-green-500']) }}
+        {{ Form::radio('rating-4', '5', false, ['class' => 'mask mask-star-2 bg-green-500']) }}
+    </div>
+
+    <div>
     {{Form::submit('Submit', ['class'=>'btn btn-primary text-white'])}}
     {!! Form::close() !!}
+    </div>
 @endsection
 
 
