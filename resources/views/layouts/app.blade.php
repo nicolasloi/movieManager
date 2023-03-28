@@ -9,6 +9,7 @@
 
     <title>{{ config('app.name', 'MovieList') }}</title>
 
+    <LINK REL="SHORTCUT ICON" href="/logoMovieList.png">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
