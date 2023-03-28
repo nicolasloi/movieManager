@@ -56,13 +56,7 @@
                                 {!!$movie->body!!}
                             </td>
                             <td>
-                                <div class="rating">
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked/>
-                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500"/>
-                                </div>
+                                {!! (new \App\Http\Controllers\MovieController())->ratingToStars($movie->star_rating) !!}
                             </td>
                             <th>
                                 <button class="btn btn-ghost btn-xs">Edit</button>

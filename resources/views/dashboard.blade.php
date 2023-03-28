@@ -54,7 +54,8 @@
                                     <div class="flex items-center space-x-3">
                                         <div class="avatar">
                                             <div class="mask mask-squircle w-24 h-24">
-                                                <img class="w-full" src="/storage/cover_images/{{$movie->cover_image}}" alt="img"/>
+                                                <img class="w-full" src="/storage/cover_images/{{$movie->cover_image}}"
+                                                     alt="img"/>
                                             </div>
                                         </div>
                                         <div>
@@ -68,7 +69,7 @@
                                 </td>
 
                                 <td>
-                                    {!!($movie->star_rating) !!}
+                                    {!! (new \App\Http\Controllers\MovieController())->ratingToStars($movie->star_rating) !!}
                                 </td>
 
                                 <th class="max-w-min">

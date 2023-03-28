@@ -76,7 +76,7 @@ class MovieController extends Controller
          $movie->body = $request->input('body');
          $movie->user_id = auth()->user()->id;
          $movie->cover_image = $fileNameToStore;
-         $movie->star_rating = $request->input('star_rating', 1);
+         $movie->star_rating = $request->input('star_rating');
          $movie->save();
 
          return redirect('/dashboard')->with('success', 'Movie Created');
@@ -113,7 +113,8 @@ class MovieController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'star_rating' => 'required'
         ]);
 
         // Handle File Upload
@@ -137,6 +138,7 @@ class MovieController extends Controller
         if($request->hasFile('cover_image')){
             $movie->cover_image = $fileNameToStore;
         }
+        $movie->star_rating = $request->input('star_rating');
         $movie->save();
 
         return redirect('/dashboard')->with('success', 'Movie Updated');
@@ -162,4 +164,22 @@ class MovieController extends Controller
         $movie->delete();
         return redirect('/dashboard')->with('success', 'Movie Removed');
     }
+
+    public function ratingToStars($rating)
+    {
+        $stars = '';
+
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= round($rating)) {
+                $stars .= '<i class="text-primary-500 fas fa-star"></i>';
+            } else {
+                $stars .= '<i class="text-gray-400 far fa-star"></i>';
+            }
+        }
+
+        return $stars;
+    }
+
+
+
 }

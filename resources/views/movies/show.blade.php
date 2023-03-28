@@ -16,6 +16,9 @@
     <hr class="text-primary">
     <small> view on {{$movie->created_at}} </small>
     <hr>
+    <div>
+        {!! (new \App\Http\Controllers\MovieController())->ratingToStars($movie->star_rating) !!}
+    </div>
     @if(!Auth::guest())
         @if(Auth::user()->id == $movie->user_id)
             <a href="/movies/{{$movie->id}}/edit"

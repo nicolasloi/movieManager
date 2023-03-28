@@ -9,7 +9,8 @@
         {{Form::text('title', $movie->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}
     </div>
     <div class="form-group p-6">
-        {{Form::file('cover_image', ['class' => 'file-input file-input-bordered file-input-primary w-full max-w-xs'])}}
+        {{Form::file('cover_image', ['class' => 'file-input file-input-bordered file-input-primary w-full max-w-xs', 'id' => 'cover_image_input', 'onchange' => 'updateFileName(this)'])}}
+        <span></span>
     </div>
     <div class="form-group">
         {{Form::label('body', 'Body')}}
@@ -18,20 +19,14 @@
     <div class="form-group">
         {{ Form::label('star_rating', 'Rating') }}
         <div class="rating">
-            {{ Form::radio('star_rating', '1', true, ['id' => 'star1', 'class' => 'mask mask-star-2 bg-green-500']) }}
-            <label for="star1"></label>
-
-            {{ Form::radio('star_rating', '2', false, ['id' => 'star2', 'class' => 'mask mask-star-2 bg-green-500']) }}
-            <label for="star2"></label>
-
-            {{ Form::radio('star_rating', '3', false, ['id' => 'star3', 'class' => 'mask mask-star-2 bg-green-500']) }}
-            <label for="star3"></label>
-
-            {{ Form::radio('star_rating', '4', false, ['id' => 'star4', 'class' => 'mask mask-star-2 bg-green-500']) }}
-            <label for="star4"></label>
-
-            {{ Form::radio('star_rating', '5', false, ['id' => 'star5', 'class' => 'mask mask-star-2 bg-green-500']) }}
-            <label for="star5"></label>
+            @for ($i = 1; $i <= 5; $i++)
+                @if ($i <= $movie->star_rating)
+                    {{ Form::radio('star_rating', $i, true, ['id' => 'star' . $i, 'class' => 'mask mask-star-2 bg-green-500']) }}
+                @else
+                    {{ Form::radio('star_rating', $i, false, ['id' => 'star' . $i, 'class' => 'mask mask-star-2 bg-green-500']) }}
+                @endif
+                <label for="star{{ $i }}"></label>
+            @endfor
         </div>
     </div>
     {!!Form::hidden('_method','PUT')!!}
