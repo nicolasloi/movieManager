@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Create Movie</h1>
+    <h1>Add New Movie</h1>
 
     {!! Form::open(['route' => 'movies.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
@@ -36,6 +36,9 @@
     <div>
     {{Form::submit('Submit', ['class'=>'btn btn-primary text-white'])}}
     {!! Form::close() !!}
+
+        <a href="/dashboard" class="btn btn-primary text-white">Cancel</a>
+
     </div>
 @endsection
 

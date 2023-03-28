@@ -30,7 +30,7 @@ class DashboardController extends Controller
         // $user = \App\Models\User::find($user_id)->movies()->paginate(8);
         $user = QueryBuilder::for(Movie::class)
             ->where('user_id', $user_id)
-            ->allowedSorts('title')
+            ->allowedSorts('title','star_rating')
             ->paginate(6);
         return view('dashboard')->with('movies', $user);
     }

@@ -12,22 +12,38 @@
                 <table class="table w-full">
                     <thead>
                     <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox"/>
-                            </label>
-                        </th>
+                        <th>show</th>
                         <th>
                             <form action="" method="get">
                                 @if(request()->get('sort') === '-title')
-                                    <button type="submit" name="sort" value="title">Name</button>
+                                    <button class="flex gap-3" type="submit" name="sort" value="title">NAME <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                            <path fill-rule="evenodd" d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
                                 @else
-                                    <button type="submit" name="sort" value="-title">Name</button>
+                                    <button class="flex gap-3" type="submit" name="sort" value="-title">NAME <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                            <path fill-rule="evenodd" d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
                                 @endif
                             </form>
                         </th>
                         <th>Content</th>
-                        <th>Score</th>
+                        <th>
+                            <form action="" method="get">
+                                @if(request()->get('sort') === '-star_rating')
+                                    <button class="flex gap-3" type="submit" name="sort" value="star_rating">SCORE <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                            <path fill-rule="evenodd" d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                @else
+                                    <button class="flex gap-3" type="submit" name="sort" value="-star_rating">SCORE <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                            <path fill-rule="evenodd" d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                @endif
+                            </form>
+                        </th>
                         <th></th>
                     </tr>
                     </thead>
@@ -78,7 +94,7 @@
                                            class="btn btn-primary py-2 text-white btn-sm">Edit</a>
                                         {!! Form::open(['route' => ['movies.destroy', $movie->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Are you sure you want to remove this movie ?")']) !!}
                                         {!!Form::hidden('_method','DELETE')!!}
-                                        {{ Form::submit('Delete', ['class'=>'btn btn-error py-2 text-white btn-sm']) }}
+                                        {{ Form::submit('DELETE', ['class'=>'btn btn-error py-2 text-white btn-sm']) }}
                                         {!! Form::close() !!}
                                     </div>
                                 </th>
