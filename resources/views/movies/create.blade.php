@@ -35,9 +35,9 @@
                 </div>
             </div>
             <div class="flex items-center justify-between">
+                <a href="/dashboard" class="bg-primary text-white font-bold py-2 px-4 rounded">Cancel</a>
                 {{Form::submit('Submit', ['class'=>'bg-primary text-white font-bold py-2 px-4 rounded'])}}
                 {!! Form::close() !!}
-                <a href="/dashboard" class="btn btn-primary text-white">Cancel</a>
             </div>
         </div>
     </div>
