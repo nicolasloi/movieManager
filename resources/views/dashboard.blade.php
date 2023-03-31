@@ -4,7 +4,9 @@
     <div class="h-screen bg-secondary">
         <div class="flex items-center">
             <h1 class="ml-11 text-xl">Dashboard</h1>
-            <button class="btn btn-primary text-white ml-auto mr-11"><a href="/movies/create">Create new</a></button>
+            <div class="ml-auto mr-11">
+                <a href="/movies/create"><button class="btn btn-primary text-white">Create new</button></a>
+            </div>
         </div>
 
         <div class="flex flex-col items-center h-screen bg-secondary mt-12">
@@ -81,7 +83,7 @@
                                     </div>
                                 </td>
                                 <td class="max-w-xs min-w-xs whitespace-pre-line">
-                                    {!! limit_text($movie->body, 50) !!}
+                                    {!! limit_text($movie->body, 35) !!}
                                 </td>
 
                                 <td>
