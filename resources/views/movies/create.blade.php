@@ -4,7 +4,7 @@
     <div class="h-screen bg-secondary">
         <h1 class="ml-10 text-xl">Add new Movie</h1>
 
-        <div class="bg-white rounded-2xl shadow-lg p-6 mt-10 mx-auto max-w-lg">
+        <div class="bg-white rounded-2xl shadow-lg p-6 mt-10 mx-auto max-w-xxl ml-72 mr-72">
             {!! Form::open(['route' => 'movies.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="mb-4">
                 {{Form::label('title', 'Title', ['class' => 'block text-gray-700 font-bold mb-2'])}}
@@ -14,8 +14,8 @@
                 {{Form::file('cover_image', ['class' => 'file-input file-input-bordered file-input-primary'])}}
             </div>
             <div class="mb-4">
-                {{Form::label('body', 'Body', ['class' => 'block text-gray-700 font-bold mb-2'])}}
-                {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'input input-bordered w-full py-2 px-3', 'placeholder' => 'Body Text'])}}
+                {{Form::label('body', 'description', ['class' => 'block text-gray-700 font-bold mb-2'])}}
+                {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'input input-bordered w-full py-2 px-3 text-gray-700 bg-gray-100 rounded'])}}
             </div>
             <div class="mb-4">
                 {{ Form::label('star_rating', 'Rating', ['class' => 'block text-gray-700 font-bold mb-2']) }}
@@ -35,8 +35,8 @@
                 </div>
             </div>
             <div class="flex items-center justify-between">
-                <a href="/dashboard" class="bg-primary text-white font-bold py-2 px-4 rounded">Cancel</a>
-                {{Form::submit('Submit', ['class'=>'bg-primary text-white font-bold py-2 px-4 rounded'])}}
+                <a href="/dashboard" class="btn bg-primary text-white font-bold py-2 px-4 rounded">Cancel</a>
+                {{Form::submit('Submit', ['class'=>'btn bg-primary text-white font-bold py-2 px-4 rounded'])}}
                 {!! Form::close() !!}
             </div>
         </div>
