@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,9 @@ Route::get('/users/{id}', function($id){
 }); */
 
 
-Route::get('/', [PagesController::class, 'index']);
+//Route::get('/', [PagesController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+
 Route::get('/services', [PagesController::class, 'services']);
 
 Route::resource('movies', MovieController::class);
@@ -29,5 +33,8 @@ Route::resource('movies', MovieController::class);
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
-Route::get('/dashboard', [MovieController::class, 'index'])->name('dashboard');
+
+Route::get('/dashboard', [MovieController::class, 'index'])->name('dashboard')->middleware('auth');
+
+//Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+//Route::get('/dashboard', [MovieController::class, 'index'])->name('dashboard');

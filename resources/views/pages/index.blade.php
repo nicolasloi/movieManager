@@ -1,14 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex flex-col items-center h-screen bg-secondary mt-32">
-        <div class="flex flex-col mx-auto bg-white rounded-lg items-center gap-11 pt-10 pb-10 mx-4 md:mx-12 flex-wrap p-80">
-            <h1 class="text-primary text-6xl"><strong>To continue :</strong></h1>
-            <p class="text-accent text-xl">please register or login if you already have an account</p>
-            <div>
-                <a href="/login"><button class="btn sm:btn-sm md:btn-md lg:btn-lg text-base-100 btn-primary mr-4 rounded-full">Login</button></a>
-                <a href="/register"><button class="btn btn-outline sm:btn-sm md:btn-md lg:btn-lg text-base-100 btn-primary rounded-full">Register</button></a>
+    <h1>Trending movies</h1>
+    <div class="row">
+        @foreach($trending_movies as $movie)
+            <div class="col-4 mb-4">
+                <div class="card">
+                    <img src="https://image.tmdb.org/t/p/w500{{ $movie['poster_path'] }}" class="card-img-top" alt="{{ $movie['title'] }} poster">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $movie['title'] }}</h5>
+                        <p class="card-text">{{ $movie['overview'] }}</p>
+                        <a href="#" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        @endforeach
     </div>
 @endsection

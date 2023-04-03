@@ -33,7 +33,7 @@
                             <form method="GET" action="{{ route('dashboard') }}">
                                 <div class="flex items-center">
                                     <label for="search" class="mr-2">Search:</label>
-                                    <input type="text" id="search" name="search" value="{{ request('search') }}" class="px-2 py-1 border rounded">
+                                    <input type="text" id="search" name="search" placeholder="title" value="{{ request('search') }}" class="px-2 py-1 border rounded placeholder:italic placeholder:text-gray-400">
                                     <button type="submit" class="btn btn-primary ml-2 btn-xs text-base-100">Search</button>
                                 </div>
                             </form>
