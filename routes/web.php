@@ -30,3 +30,4 @@ Route::resource('movies', MovieController::class);
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::get('/dashboard', [MovieController::class, 'index'])->name('dashboard');

@@ -27,11 +27,23 @@ class MovieController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index()
+    public function index(Request $request)
     {
-        $movies = QueryBuilder::for(Movie::class)->allowedSorts('title', 'created_at')->paginate(6);
-        return view('movies.index')->with('movies', $movies);
+        $user_id = auth()->user()->id;
+
+        $searchTerm = $request->input('search');
+        if ($searchTerm) {
+            $user = Movie::search($searchTerm)->where('user_id', $user_id)->paginate(6);
+        } else {
+            $user = QueryBuilder::for(Movie::class)
+                ->where('user_id', $user_id)
+                ->allowedSorts('title','star_rating')
+                ->paginate(6);
+        }
+
+        return view('dashboard')->with('movies', $user);
     }
+
 
 
     /**
@@ -179,21 +191,5 @@ class MovieController extends Controller
 
         return $stars;
     }
-
-    public function search(Request $request)
-    {
-        $searchTerm = $request->input('q');
-
-        if (!empty($searchTerm)) {
-            $movies = Movie::search($searchTerm)->get();
-        } else {
-            $movies = Movie::all();
-        }
-
-        return view('dashboard', compact('movies'));
-    }
-
-
-
 
 }
