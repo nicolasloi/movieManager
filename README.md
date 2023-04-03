@@ -13,6 +13,7 @@ The features of this application are:
 -   Give a rating: Users can rate a movie on a scale of 1 to 5 stars.
 -   Add a comment: Users can leave a comment on each movie.
 -   Log in / Log out / Register: Users can log in, log out, and register to access their movie list.
+-   Search movies: Users can search for movies by title.
 
 ### Tools
 
@@ -21,3 +22,4 @@ The tools used to develop this application are:
 -   Laravel: The Laravel framework is used to develop the application.
 -   Blade: The Blade template engine is used to generate HTML pages.
 -   DaisyUI: The DaisyUI style library is used for design.
+-   Meilisearch: Meilisearch is used to power the movie search functionality.
