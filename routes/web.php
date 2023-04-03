@@ -26,8 +26,6 @@ Route::get('/users/{id}', function($id){
 //Route::get('/', [PagesController::class, 'index']);
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/services', [PagesController::class, 'services']);
-
 Route::resource('movies', MovieController::class);
 
 

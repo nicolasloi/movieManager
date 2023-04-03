@@ -1,19 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Trending movies</h1>
-    <div class="row">
+    <h1 class="text-xl font-bold mb-4">Trending movies</h1>
+    <div class="flex flex-wrap -mx-4">
         @foreach($trending_movies as $movie)
-            <div class="col-4 mb-4">
-                <div class="card">
-                    <img src="https://image.tmdb.org/t/p/w500{{ $movie['poster_path'] }}" class="card-img-top" alt="{{ $movie['title'] }} poster">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $movie['title'] }}</h5>
-                        <p class="card-text">{{ $movie['overview'] }}</p>
+            <div class="w-full md:w-1/2 lg:w-1/6 p-4">
+                <div class="bg-white rounded-lg shadow-lg">
+                    <img src="https://image.tmdb.org/t/p/w500{{ $movie['poster_path'] }}" class="w-full rounded-t-lg"
+                         alt="{{ $movie['title'] }} poster">
+                    <div class="p-4">
+                        <h5 class="text-lg font-bold mb-2">{{ $movie['title'] }}</h5>
+                        <p class="text-gray-700 text-base leading-relaxed mb-4">{{ $movie['overview'] }}</p>
                         <a href="#" class="btn btn-primary">Details</a>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
+
 @endsection
