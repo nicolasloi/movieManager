@@ -180,6 +180,20 @@ class MovieController extends Controller
         return $stars;
     }
 
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('q');
+
+        if (!empty($searchTerm)) {
+            $movies = Movie::search($searchTerm)->get();
+        } else {
+            $movies = Movie::all();
+        }
+
+        return view('dashboard', compact('movies'));
+    }
+
+
 
 
 }

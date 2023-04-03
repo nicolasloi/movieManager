@@ -15,7 +15,7 @@
                     <thead>
                     <tr>
                         <th>show</th>
-                        <th>
+                        <th class="flex gap-14 justify-center items-center">
                             <form action="" method="get">
                                 @if(request()->get('sort') === '-title')
                                     <button class="flex gap-3" type="submit" name="sort" value="title">NAME <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -29,6 +29,15 @@
                                     </button>
                                 @endif
                             </form>
+
+                            <form method="GET">
+                                <div class="flex items-center">
+                                    <label for="search" class="mr-2">Search:</label>
+                                    <input type="text" id="search" name="search" value="{{ request('search') }}" class="px-2 py-1 border rounded">
+                                    <button type="submit" class="btn btn-primary ml-2">Search</button>
+                                </div>
+                            </form>
+
                         </th>
                         <th>Content</th>
                         <th>
@@ -78,7 +87,7 @@
                                         </div>
                                         <div>
                                             <div class="font-bold">{{$movie->title}}</div>
-                                            <div class="text-sm opacity-50">{{$movie->created_at}}</div>
+                                            <div class="text-sm opacity-50">{{ \Carbon\Carbon::parse($movie->created_at)->diffForHumans() }}</div>
                                         </div>
                                     </div>
                                 </td>
