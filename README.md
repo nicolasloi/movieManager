@@ -11,6 +11,7 @@ The features of this application are:
 - Add a comment: Users can leave a comment on each movie.
 - Log in / Log out / Register: Users can log in, log out, and register to access their movie list.
 - Search movies: Users can search for movies by title.
+- A homepage with Trending movies.
 
 ## Tools
 
@@ -37,7 +38,7 @@ The tools used to develop this application are:
  - Download Meilisearch from https://docs.meilisearch.com/learn/getting_started/quick_start.html.
    - Once downloaded in run this command : 
     ```bash
-   $ meilisearch
+   $ meilisearch --master-key=YOUR_MASTER_KEY
    ```
 
 ### Steps
