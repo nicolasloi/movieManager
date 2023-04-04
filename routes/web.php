@@ -17,22 +17,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-/* for dynamic routes
-Route::get('/users/{id}', function($id){
-   return 'this is user '.$id;
-}); */
-
-
-//Route::get('/', [PagesController::class, 'index']);
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
-
 Route::resource('movies', MovieController::class);
-
-
 Auth::routes();
-
-
 Route::get('/dashboard', [MovieController::class, 'index'])->name('dashboard')->middleware('auth');
-
-//Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
-//Route::get('/dashboard', [MovieController::class, 'index'])->name('dashboard');
