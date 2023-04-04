@@ -37,13 +37,12 @@ class MovieController extends Controller
         } else {
             $user = QueryBuilder::for(Movie::class)
                 ->where('user_id', $user_id)
-                ->allowedSorts('title','star_rating')
+                ->allowedSorts('title', 'star_rating')
                 ->paginate(6);
         }
 
         return view('dashboard')->with('movies', $user);
     }
-
 
 
     /**
@@ -59,6 +58,7 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate the input data
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
@@ -66,8 +66,10 @@ class MovieController extends Controller
             'star_rating' => 'required'
         ]);
 
+        // Check if the response is successful
+
         // Handle File Upload
-        if($request->hasFile('cover_image')){
+        if ($request->hasFile('cover_image')) {
             // Get filename with the extension
             $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
             // Get just filname
@@ -75,7 +77,7 @@ class MovieController extends Controller
             // get just ext
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             // File name to store
-            $fileNameToStore = $filName.'_'.time().'.'.$extension;
+            $fileNameToStore = $filName . '_' . time() . '.' . $extension;
             // Upload Image
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
         } else {
@@ -83,16 +85,17 @@ class MovieController extends Controller
         }
 
         // Create movie
-         $movie = new Movie;
-         $movie->title = $request->input('title');
-         $movie->body = $request->input('body');
-         $movie->user_id = auth()->user()->id;
-         $movie->cover_image = $fileNameToStore;
-         $movie->star_rating = $request->input('star_rating');
-         $movie->save();
+        $movie = new Movie;
+        $movie->title = $request->input('title');
+        $movie->body = $request->input('body');
+        $movie->user_id = auth()->user()->id;
+        $movie->cover_image = $fileNameToStore;
+        $movie->star_rating = $request->input('star_rating');
+        $movie->save();
 
-         return redirect('/dashboard')->with('success', 'Movie Created');
+        return redirect('/dashboard')->with('success', 'Movie Created');
     }
+
 
     /**
      * Display the specified resource.
@@ -111,7 +114,7 @@ class MovieController extends Controller
         $movie = Movie::find($id);
 
         // Check for correct user
-        if (auth()->user()->id !==$movie->user_id){
+        if (auth()->user()->id !== $movie->user_id) {
             return redirect('/dashboard')->with('error', 'Unauthorized Page');
         }
 
@@ -130,7 +133,7 @@ class MovieController extends Controller
         ]);
 
         // Handle File Upload
-        if($request->hasFile('cover_image')){
+        if ($request->hasFile('cover_image')) {
             // Get filename with the extension
             $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
             // Get just filname
@@ -138,7 +141,7 @@ class MovieController extends Controller
             // get just ext
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             // File name to store
-            $fileNameToStore = $filName.'_'.time().'.'.$extension;
+            $fileNameToStore = $filName . '_' . time() . '.' . $extension;
             // Upload Image
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
         }
@@ -147,7 +150,7 @@ class MovieController extends Controller
         $movie = Movie::find($id);
         $movie->title = $request->input('title');
         $movie->body = $request->input('body');
-        if($request->hasFile('cover_image')){
+        if ($request->hasFile('cover_image')) {
             $movie->cover_image = $fileNameToStore;
         }
         $movie->star_rating = $request->input('star_rating');
@@ -164,13 +167,13 @@ class MovieController extends Controller
         $movie = Movie::find($id);
 
         // Check for correct user
-        if (auth()->user()->id !==$movie->user_id){
+        if (auth()->user()->id !== $movie->user_id) {
             return redirect('/dashboard')->with('error', 'Unauthorized Page');
         }
 
-        if($movie->cover_image != 'noImage.jpg'){
+        if ($movie->cover_image != 'noImage.jpg') {
             //delete image
-            Storage::delete('public/cover_images/'.$movie->cover_image);
+            Storage::delete('public/cover_images/' . $movie->cover_image);
         }
 
         $movie->delete();
@@ -191,5 +194,4 @@ class MovieController extends Controller
 
         return $stars;
     }
-
 }
