@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use function PHPUnit\Framework\stringEndsWith;
 
 class HomeController extends Controller
 {
