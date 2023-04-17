@@ -46,7 +46,7 @@ The tools used to develop this application are:
 1. Clone the Git repository:
 
    ```bash
-   $ git clone https://github.com/USERNAME/movie-list.git
+   $ git clone git@github.com:nicolasloi/movieList.git
    $ cd movie-list
     ```
 2. Install PHP dependencies with Composer:
