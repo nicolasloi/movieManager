@@ -8,33 +8,32 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'MovieList') }}</title>
-
     <LINK REL="SHORTCUT ICON" href="/logo_movieList.png">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     @vite('resources/css/app.css')
     @vite('resources/css/custom.css')
 
 </head>
 <body class="bg-secondary">
-    <div id="app">
-        @include('inc.navbar')
-        <div class="flex flex-col p-4 gap-5 items-center">
-            @include('inc.messages')
-        </div>
-
-        <div>
-            @yield('content')
-        </div>
-
-        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-        <script>
-            CKEDITOR.replace('article-ckeditor');
-        </script>
+<div id="app">
+    @include('inc.navbar')
+    <div class="flex flex-col p-4 gap-5 items-center">
+        @include('inc.messages')
     </div>
+
+    <div>
+        @yield('content')
+    </div>
+
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>CKEDITOR.replace('article-ckeditor');</script>
+</div>
 </body>
 </html>

@@ -21,7 +21,7 @@
         <ul class="menu menu-horizontal space-x-20">
             <li><a href="/">Home</a></li>
             @if(!Auth::guest())
-            <li><a href="/dashboard">dashboard</a></li>
+                <li><a href="/dashboard">dashboard</a></li>
             @endif
         </ul>
     </div>
@@ -46,36 +46,37 @@
                 @endif
             @else
                 <div class="dropdown dropdown-end">
-                        <label tabindex="0" class="btn m-1 btn-primary text-base-100"> <a id="navbarDropdown"
-                                                                                          class="nav-link dropdown-toggle"
-                                                                                          href="#" role="button"
-                                                                                          data-bs-toggle="dropdown"
-                                                                                          aria-haspopup="true"
-                                                                                          aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a></label>
-                        <ul tabindex="0"
-                            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <label tabindex="0" class="btn m-1 btn-primary text-base-100"> <a id="navbarDropdown"
+                                                                                      class="nav-link dropdown-toggle"
+                                                                                      href="#" role="button"
+                                                                                      data-bs-toggle="dropdown"
+                                                                                      aria-haspopup="true"
+                                                                                      aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a></label>
+                    <ul tabindex="0"
+                        class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 
-                            <li>
-                                <a href="/dashboard" class="justify-between">
-                                    Dashboard
-                                    <span class="badge badge-primary text-base-100">New</span>
-                                </a>
-                            </li>
+                        <li>
+                            <a href="/dashboard" class="justify-between">
+                                Dashboard
+                                <span class="badge badge-primary text-base-100">New</span>
+                            </a>
+                        </li>
 
-                            <li>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                {{ __('Logout') }}
+                            </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none bg-primary mt-2">
-                                        @csrf
-                                    </form>
-                            </li>
-                        </ul>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                  class="d-none bg-primary mt-2">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             @endguest
 

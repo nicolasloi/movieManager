@@ -5,7 +5,9 @@
         <div class="flex items-center">
             <h1 class="ml-11 text-xl">Dashboard</h1>
             <div class="ml-auto mr-11">
-                <a href="/movies/create"><button class="btn btn-primary text-white">Create new</button></a>
+                <a href="/movies/create">
+                    <button class="btn btn-primary text-white">Create new</button>
+                </a>
             </div>
         </div>
 
@@ -18,13 +20,21 @@
                         <th class="flex gap-14 justify-center items-center">
                             <form action="" method="get">
                                 @if(request()->get('sort') === '-title')
-                                    <button class="flex gap-3" type="submit" name="sort" value="title">NAME <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                                            <path fill-rule="evenodd" d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z" clip-rule="evenodd" />
+                                    <button class="flex gap-3" type="submit" name="sort" value="title">NAME
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                             class="w-5 h-5">
+                                            <path fill-rule="evenodd"
+                                                  d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z"
+                                                  clip-rule="evenodd"/>
                                         </svg>
                                     </button>
                                 @else
-                                    <button class="flex gap-3" type="submit" name="sort" value="-title">NAME <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                                            <path fill-rule="evenodd" d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z" clip-rule="evenodd" />
+                                    <button class="flex gap-3" type="submit" name="sort" value="-title">NAME
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                             class="w-5 h-5">
+                                            <path fill-rule="evenodd"
+                                                  d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z"
+                                                  clip-rule="evenodd"/>
                                         </svg>
                                     </button>
                                 @endif
@@ -33,8 +43,10 @@
                             <form method="GET" action="{{ route('movies.index') }}">
                                 <div class="flex items-center">
                                     <label for="search" class="mr-2">Search:</label>
-                                    <input type="text" id="search" name="search" value="{{ request('search') }}" class="px-2 py-1 border rounded">
-                                    <button type="submit" class="btn btn-primary ml-2 btn-xs text-base-100">Search</button>
+                                    <input type="text" id="search" name="search" value="{{ request('search') }}"
+                                           class="px-2 py-1 border rounded">
+                                    <button type="submit" class="btn btn-primary ml-2 btn-xs text-base-100">Search
+                                    </button>
                                 </div>
                             </form>
 
@@ -43,13 +55,21 @@
                         <th>
                             <form action="" method="get">
                                 @if(request()->get('sort') === '-star_rating')
-                                    <button class="flex gap-3" type="submit" name="sort" value="star_rating">SCORE <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                                            <path fill-rule="evenodd" d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z" clip-rule="evenodd" />
+                                    <button class="flex gap-3" type="submit" name="sort" value="star_rating">SCORE
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                             class="w-5 h-5">
+                                            <path fill-rule="evenodd"
+                                                  d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z"
+                                                  clip-rule="evenodd"/>
                                         </svg>
                                     </button>
                                 @else
-                                    <button class="flex gap-3" type="submit" name="sort" value="-star_rating">SCORE <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                                            <path fill-rule="evenodd" d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z" clip-rule="evenodd" />
+                                    <button class="flex gap-3" type="submit" name="sort" value="-star_rating">SCORE
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                             class="w-5 h-5">
+                                            <path fill-rule="evenodd"
+                                                  d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z"
+                                                  clip-rule="evenodd"/>
                                         </svg>
                                     </button>
                                 @endif
@@ -87,7 +107,8 @@
                                         </div>
                                         <div>
                                             <div class="font-bold">{{$movie->title}}</div>
-                                            <div class="text-sm opacity-50">{{ \Carbon\Carbon::parse($movie->created_at)->diffForHumans() }}</div>
+                                            <div
+                                                class="text-sm opacity-50">{{ \Carbon\Carbon::parse($movie->created_at)->diffForHumans() }}</div>
                                         </div>
                                     </div>
                                 </td>
@@ -122,6 +143,7 @@
             @endif
         </div>
     </div>
+    {{-- Function for limiting text --}}
     @php
         function limit_text($text, $limit) {
             if (strlen($text) > $limit) {

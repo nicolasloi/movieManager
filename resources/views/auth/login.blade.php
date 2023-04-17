@@ -15,9 +15,12 @@
                             @csrf
 
                             <div class="mb-4">
-                                <label for="email" class="block text-gray-700 font-bold mb-2">{{ __('Email Address') }}</label>
+                                <label for="email"
+                                       class="block text-gray-700 font-bold mb-2">{{ __('Email Address') }}</label>
 
-                                <input id="email" type="email" class="input input-bordered input-sm w-full max-w-xs @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email"
+                                       class="input input-bordered input-sm w-full max-w-xs @error('email') border-red-500 @enderror"
+                                       name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                 <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
@@ -25,9 +28,12 @@
                             </div>
 
                             <div class="mb-4">
-                                <label for="password" class="block text-gray-700 font-bold mb-2">{{ __('Password') }}</label>
+                                <label for="password"
+                                       class="block text-gray-700 font-bold mb-2">{{ __('Password') }}</label>
 
-                                <input id="password" type="password" class="input input-bordered input-sm w-full max-w-xs @error('password') border-red-500 @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password"
+                                       class="input input-bordered input-sm w-full max-w-xs @error('password') border-red-500 @enderror"
+                                       name="password" required autocomplete="current-password">
 
                                 @error('password')
                                 <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
@@ -36,7 +42,8 @@
 
                             <div class="mb-4">
                                 <label class="inline-flex items-center">
-                                    <input type="checkbox" class="input input-sm border-none bg-gray-300" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input type="checkbox" class="input input-sm border-none bg-gray-300"
+                                           name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                     <span class="ml-2">{{ __('Remember Me') }}</span>
                                 </label>
                             </div>
@@ -47,7 +54,8 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="inline-block align-baseline font-bold text-sm text-primary hover:text-primary-darker" href="{{ route('password.request') }}">
+                                    <a class="inline-block align-baseline font-bold text-sm text-primary hover:text-primary-darker"
+                                       href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif

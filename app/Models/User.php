@@ -42,7 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function movies(){
+    /**
+     * Get the movies that belong to the user.
+     */
+    public function movies()
+    {
         return $this->hasMany('App\Models\Movie');
     }
 }

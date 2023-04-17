@@ -180,6 +180,10 @@ class MovieController extends Controller
         return redirect('/dashboard')->with('success', 'Movie Removed');
     }
 
+    /**
+     * Convert a movie's star rating to HTML stars.
+     *
+     *      */
     public function ratingToStars($rating)
     {
         $stars = '';

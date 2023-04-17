@@ -18,7 +18,8 @@
                                         <p class="block text-gray-700 font-bold mb-2">Rating</p>
                                         {!! (new \App\Http\Controllers\MovieController())->ratingToStars($movie->star_rating) !!}
                                     </div>
-                                    <p class="text-gray-600">Seen {{ \Carbon\Carbon::parse($movie->created_at)->diffForHumans() }}</p>
+                                    <p class="text-gray-600">
+                                        Seen {{ \Carbon\Carbon::parse($movie->created_at)->diffForHumans() }}</p>
                                 </div>
                                 <div class="flex-grow m-9">
                                     <p class="block text-gray-700 font-bold mb-2 text-xl mb-3">Content : </p>
