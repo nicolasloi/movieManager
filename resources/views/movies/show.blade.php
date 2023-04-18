@@ -22,16 +22,16 @@
                                         Seen {{ \Carbon\Carbon::parse($movie->created_at)->diffForHumans() }}</p>
                                 </div>
                                 <div class="flex-grow m-9">
-                                    <p class="block text-gray-700 font-bold mb-2 text-xl mb-3">Content : </p>
+                                    <p class="block text-gray-700 font-bold mb-2 text-xl">Content : </p>
                                     {!!$movie->body!!}
                                 </div>
                             </div>
-                            <div class="right">
+                            <div class="right flex justify-end">
                                 @if($movie->cover_image == 'noImage.jpg')
                                 @else
-                                    <div class="w-auto max-w-xll rounded-lg border-solid border-2 border-primary m-5">
+                                    <div class=" w-auto max-w-xs mr-8">
                                         <img class="w-auto"
-                                             src="/storage/cover_images/{{$movie->cover_image}}" alt="img"/>
+                                             src="/storage/cover_images/{{$movie->cover_image}}" alt="cover_image"/>
                                     </div>
                                 @endif
                             </div>

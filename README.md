@@ -1,4 +1,4 @@
-<h1 align="center"> Movie List </h1>
+<h1 align="center"> Movie Manager </h1>
 
 This project is a movie manager that allows users to store the movies they have watched and rate them on a scale of 1 to 5 stars, as well as leave a comment. Users can log in, log out, and register to access their movie list.
 
