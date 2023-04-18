@@ -18,7 +18,7 @@
             @endforeach
         </div>
 
-        <div class="mt-12 mb-12">
+        <div class="mt-12">
             <h2 class="ml-11 text-xl">Popular TV Show</h2>
             <div class="flex flex-row overflow-x-auto mt-12 ml-8 mr-8 mb-5">
                 @foreach ($top_rated_movies as $tv)
