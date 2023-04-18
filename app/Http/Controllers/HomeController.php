@@ -15,23 +15,28 @@ class HomeController extends Controller
     public function index()
     {
         // Send a GET request to The Movie Database API to retrieve trending movies for the week
-        $response = Http::get('https://api.themoviedb.org/3/trending/movie/week', [
+        $trendingResponse = Http::get('https://api.themoviedb.org/3/trending/movie/week', [
             'api_key' => env('TMDB_API_KEY'),
         ]);
 
-        // If the response is successful, extract the list of trending movies
-        if ($response->ok()) {
+        // Send a GET request to The Movie Database API to retrieve top rated movies
+        $topRatedResponse = Http::get('https://api.themoviedb.org/3/tv/top_rated', [
+            'api_key' => env('TMDB_API_KEY'),
+            'region' => 'US',
+        ]);
 
-            $trending_movies = $response->json()['results'];
+        // If the responses are successful, extract the lists of movies and TV shows
+        if ($trendingResponse->ok() && $topRatedResponse->ok()) {
+            $trending_movies = $trendingResponse->json()['results'];
+            $top_rated_movies = $topRatedResponse->json()['results'];
         } else {
-
-            // If the response is not successful, display an error message
-            $error = $response->json()['status_message'];
+            // If any of the responses is not successful, display an error message
+            $error = $trendingResponse->json()['status_message'] ?? $topRatedResponse->json()['status_message'];
             return view('inc.messages', compact('error'));
         }
 
-        // Render the homepage view, passing in the list of trending movies
-        return view('pages.index', compact('trending_movies'));
+        // Render the homepage view, passing in the lists of trending movies and top rated movies
+        return view('pages.index', compact('trending_movies', 'top_rated_movies'));
     }
 }
 
